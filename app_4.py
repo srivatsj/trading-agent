@@ -4,6 +4,7 @@ from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
+import csv_reader as cr
 
 # Cache prompt for future runs
 @st.cache_data()
@@ -34,9 +35,13 @@ if 'messages' not in st.session_state:
     st.session_state.messages = []
 
 # Draw a title and some markdown
-st.title("Your personal Efficiency Booster")
-st.markdown("""Generative AI is considered to bring the next Industrial Revolution.  
-Why? Studies show a **37% efficiency boost** in day to day work activities!""")
+st.title("~~~Trading Agent~~~")
+st.markdown("""Trading Agent""")
+
+# Get the first column values from 10 random rows
+first_column_values = cr.read_random_rows_from_csv()
+st.markdown("Tweets:")
+st.markdown(first_column_values)
 
 # Draw all messages, both user and bot so far (every time the app reruns)
 for message in st.session_state.messages:
