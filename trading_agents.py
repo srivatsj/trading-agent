@@ -29,7 +29,10 @@ class TradingAgents():
       goal="""Being the best at determining the stock sentinment from a {tweet}""",
       backstory="""Known as the BEST twitter tweet sentinment analyst for tweets regarding stocks, you're
       skilled reading through tweets and determine whether the specified stock tweet is 'bullish', 'bearish', 'neutral'  
-      and if it's not clear if the tweet is about a stock return 'unknown'""",
+      and if it's not clear if the tweet is about a stock return 'unknown'
+      Example output:
+      bullish
+      """,
       verbose=True,
       tools=[]
   )
