@@ -17,7 +17,7 @@ def load_prompt():
 
     User's question is in the form of "Generate {n} tweets for {stock}" and that is how you decide how many tweets and for which stock you will be creating.
     If user specifies bullish/bearish/neutral, only generate tweets with that sentiment.
-    If user does not specify or asks for random generate a variation  of all 3.
+    If user does not specify or asks for random generate a variation of all 3.
 
     QUESTION:
     {question}
