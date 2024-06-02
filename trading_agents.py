@@ -25,13 +25,11 @@ class TradingAgents():
 
   def sentiment_analyst(self):
     return Agent(
-      role='Staff Research Analyst',
-      goal="""Being the best at gather, interpret data and amaze
-      your customer with it""",
-      backstory="""Known as the BEST research analyst, you're
-      skilled in sifting through news, company announcements, 
-      and market sentiments. Now you're working on a super 
-      important customer""",
+      role='Tweet Stock Sentiment Analyst',
+      goal="""Being the best at determining the stock sentinment from a {tweet}""",
+      backstory="""Known as the BEST twitter tweet sentinment analyst for tweets regarding stocks, you're
+      skilled reading through tweets and determine whether the specified stock tweet is 'bullish', 'bearish', 'neutral'  
+      and if it's not clear if the tweet is about a stock return 'unknown'""",
       verbose=True,
       tools=[]
   )
