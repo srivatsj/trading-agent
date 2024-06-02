@@ -5,6 +5,17 @@ from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
 import csv_reader as cr
+from datetime import datetime
+
+def append_ticker_and_time(input_array, ticker_symbol):
+    timestamp_str = str(int(datetime.now().timestamp()))
+    print("Current Timestamp:", timestamp_str)
+    output_array = []
+    for element in input_array:
+        # Append "TSLA" and timestamp to each element
+        new_element =  "\"" + ticker_symbol + "\",\"" + timestamp_str + "\"," + element
+        output_array.append(new_element)
+    return output_array
 
 # Cache prompt for future runs
 @st.cache_data()
@@ -71,7 +82,22 @@ if question := st.chat_input("Generate tweets?"):
     # Store the bot's answer in a session object for redrawing next time
     st.session_state.messages.append({"role": "ai", "content": answer})
 
+    # Convert answer into a str array.
+    tweets_array = answer.split('\n')
+    print(tweets_array)
+
+    # TODO: Extract ticker symbol
+    ticker_symbol = 'TSLA'
+
+    # TODO: Add ticker symbol and timestamp to each element.
+    final_tweets_array = append_ticker_and_time(tweets_array, ticker_symbol)
+
+    # TODO: Write <Ticker Symbol>, <Timestamp>, <Tweet Content>, <Sentiment> to csv file.
+
     # Draw the bot's answer
     with st.chat_message('assistant'):
-        st.markdown(answer)
+        st.markdown(tweets_array)
+        st.markdown(final_tweets_array)
+
+    
     
