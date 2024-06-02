@@ -9,13 +9,13 @@ import csv_reader as cr
 # Cache prompt for future runs
 @st.cache_data()
 def load_prompt():
-    template = """You're a helpful AI assistent tasked to generate {n} variations of tweet-sentiment pairs.
-    Each tweet should be unique and clearly phrased and related to stock analysis of {stockname} stock.
+    template = """You're a helpful AI assistent tasked to generate N variations of tweet-sentiment pairs.
+    Each tweet should be unique and clearly phrased and related to stock analysis of STOCKNAME stock.
     The corresponding sentiment should be one of bullish, bearish, neutral.
     Output should be csv format with two columns: first column is the tweet content and the second column is the sentiment which is bullish, bearish or neutral.
     Don't include header row in the output.
 
-    User's question is in the form of "Generate {n} tweets for {stock}" and that is how you decide how many tweets and for which stock you will be creating.
+    User's question is in the form of "Generate N tweets for STOCKNAME" and that is how you decide how many tweets and for which stock you will be creating.
     If user specifies bullish/bearish/neutral, only generate tweets with that sentiment.
     If user does not specify or asks for random generate a variation of all 3.
 
