@@ -7,12 +7,16 @@ from langchain.tools.yahoo_finance_news import YahooFinanceNewsTool
 class TradingAgents():
   def ticker_analyst(self):
     return Agent(
-      role='The Best Financial Analyst',
-      goal="""Impress all customers with your financial data 
-      and market trends analysis""",
-      backstory="""The most seasoned financial analyst with 
-      lots of expertise in stock market analysis and investment
-      strategies that is working for a super important customer.""",
+      role='The Best Stock ticker Extractor',
+      goal="""Return a comma separated list of stock ticker symbols from the {tweet}""",
+      backstory="""You're a helpful Tweet Stock Tweet Inspection Agent that gets a tweet and determine which company stock ticker symbols are mentioned in tweet an return a comma separate list of stock ticker symbols where each stock ticker symbol is prefixed with '$', like $GOOGL.
+    If the stock ticker symbol is not mentioned but a company or product name is mentioned return the stock ticker symbol for the company only if it exists.   If the stock ticker symbol for the company does not exist for cases where the company is a private company return 'UNKNOWN'.   
+    If no companies are/or stock ticker symbols are mentioned in the whole tweet return 'NONE'.
+    Always prefix each stock ticker symmbol with a '$' in the comma separate list unless the answer is 'UNKNOWN' or 'NONE'
+
+    Example output:
+    $GOOGL,$AAPL,$TSLA,$CRM
+    """,
       verbose=True,
       tools=[
         SearchTools.search_internet
