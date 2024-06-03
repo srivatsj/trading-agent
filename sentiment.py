@@ -38,10 +38,13 @@ if 'messages' not in st.session_state:
 st.title("~~~Trading Agent~~~")
 st.markdown("""Trading Agent""")
 
-# Get the first column values from 10 random rows
-first_column_values = cr.read_random_rows_from_csv()
-st.markdown("Tweets:")
-st.markdown(first_column_values)
+random_tweet_values = cr.read_random_rows_from_csv()
+st.markdown("Random 10 tweets:")
+st.markdown(random_tweet_values)
+
+most_recent_tweet_values = cr.read_most_recent_rows_from_csv(5, "TSLA")
+st.markdown("Most recent 5 tweets for TSLA:")
+st.markdown(most_recent_tweet_values)
 
 # Draw all messages, both user and bot so far (every time the app reruns)
 for message in st.session_state.messages:
