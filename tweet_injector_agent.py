@@ -55,9 +55,8 @@ if 'messages' not in st.session_state:
     st.session_state.messages = []
 
 # Draw a title and some markdown
-# Draw a title and some markdown
 st.title("~~~Tweet Injector Agent~~~")
-st.markdown("""Tweet Injector Agent""")
+st.markdown("""Example usage: Generate N tweets for STOCKNAME""")
 
 # Draw all messages, both user and bot so far (every time the app reruns)
 for message in st.session_state.messages:
@@ -101,6 +100,3 @@ if question := st.chat_input("Generate tweets?"):
     with st.chat_message('assistant'):
         for tweet in final_tweets_array:
           st.markdown(tweet)
-
-    
-    
