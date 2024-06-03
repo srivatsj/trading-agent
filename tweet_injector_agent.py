@@ -93,7 +93,7 @@ if question := st.chat_input("Generate tweets?"):
     # Add ticker symbol and timestamp to each element.
     final_tweets_array = append_ticker_and_time(tweets_array, ticker_symbol)
 
-    # TODO: Write "Ticker Symbol","Timestamp", "Tweet Content", "Sentiment" to csv file.
+    # Write "Ticker Symbol","Timestamp", "Tweet Content", "Sentiment" to csv file.
     cw.write_array_to_csv(final_tweets_array)
 
     # Draw the bot's answer
