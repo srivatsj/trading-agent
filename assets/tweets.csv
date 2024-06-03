@@ -1,3 +1,4 @@
+"Ticker Symbol","Timestamp", "Tweet Content", "Sentiment"
 "TSLA","1717372497000","$TSLA delivers a record number of vehicles this quarter, beating analyst expectations.","bullish"
 "TSLA","1717372497000","$TSLA's new Gigafactory in Texas faces regulatory hurdles delaying production.","bearish"
 "TSLA","1717372497000","Analysts predict $TSLA's new battery technology will revolutionize the EV market.","bullish"
@@ -179,3 +180,4 @@
 "TSLA","1717373812227","Tesla's commitment to sustainability and innovation sets it apart from traditional automakers. #TSLA","bullish"
 "TSLA","1717373812227","Despite challenges in the global supply chain, Tesla's resilient business model has helped it navigate through uncertainties. #TSLA","bullish"
 "TSLA","1717373812227","Tesla's upcoming earnings report is highly anticipated by investors, with expectations of strong financial performance. #TSLA","bullish"
+"TSLA","1717373812228","Tesla is doing great!!!","bullish"
