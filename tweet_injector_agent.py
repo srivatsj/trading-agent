@@ -4,11 +4,11 @@ from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
-import csv_reader as cr
+import csv_writer as cw
 from datetime import datetime
 
 def append_ticker_and_time(input_array, ticker_symbol):
-    timestamp_str = str(int(datetime.now().timestamp()))
+    timestamp_str = str(int(datetime.now().timestamp() * 1000))
     print("Current Timestamp:", timestamp_str)
     output_array = []
     for element in input_array:
@@ -25,6 +25,8 @@ def load_prompt():
     The corresponding sentiment should be one of bullish, bearish, neutral.
     Output should be csv format with two columns: first column is the tweet content and the second column is the sentiment which is bullish, bearish or neutral.
     Don't include header row in the output.
+    Example output format:
+    "Tweet content","bullish"
 
     User's question is in the form of "Generate N tweets for STOCKNAME" and that is how you decide how many tweets and for which stock you will be creating.
     If user specifies bullish/bearish/neutral, only generate tweets with that sentiment.
@@ -89,15 +91,16 @@ if question := st.chat_input("Generate tweets?"):
     # TODO: Extract ticker symbol
     ticker_symbol = 'TSLA'
 
-    # TODO: Add ticker symbol and timestamp to each element.
+    # Add ticker symbol and timestamp to each element.
     final_tweets_array = append_ticker_and_time(tweets_array, ticker_symbol)
 
-    # TODO: Write <Ticker Symbol>, <Timestamp>, <Tweet Content>, <Sentiment> to csv file.
+    # TODO: Write "Ticker Symbol","Timestamp", "Tweet Content", "Sentiment" to csv file.
+    cw.write_array_to_csv(final_tweets_array)
 
     # Draw the bot's answer
     with st.chat_message('assistant'):
-        st.markdown(tweets_array)
-        st.markdown(final_tweets_array)
+        for tweet in final_tweets_array:
+          st.markdown(tweet)
 
     
     
