@@ -17,9 +17,8 @@ def get_tweet_sentiment(tweets):
     return response.content
 
 def load_prompt():
-    template = """You're a helpful AI Trading Agent that gets a list of the 10 latest tweets. Classify each tweet as bullish, bearish or neutral.   
-    If it's not clear what the sentiment of the tweet is, return unknown.   
-    Additionally, please summarize the tweets and give an overall recommendation of bullish, bearish or neutral for the given stock.
+    template = """You're a helpful AI Trading Agent that gets a list of the latest tweets. Classify each tweet as bullish, bearish or neutral.   
+    If it's not clear what the sentiment of the tweet is, return unknown.
  
 Tweets:
 {tweets}
