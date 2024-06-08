@@ -9,16 +9,31 @@ from datetime import datetime
 from streamingworkflow.graph import StreamingWorkFlow
 from chatworkflow.graph import ChatWorkFlow
 from langchain_core.messages import HumanMessage
+import ticker as ticker
 
-def append_ticker_and_time(input_array, ticker_symbol):
+def append_ticker_and_time(input_array, ticker_symbol_array):
     timestamp_str = str(int(datetime.now().timestamp() * 1000))
     print("Current Timestamp:", timestamp_str)
     output_array = []
+    i=0
     for element in input_array:
         # Append "TSLA" and timestamp to each element
-        new_element =  "\"" + ticker_symbol + "\",\"" + timestamp_str + "\"," + element
+        new_element =  "\"" + ticker_symbol_array[i] + "\",\"" + timestamp_str + "\"," + element
+        i=i+1
         output_array.append(new_element)
     return output_array
+
+def get_first_word(input_string):
+    # Split the input string by commas
+    words = input_string.split(',')
+
+    # Return the first word
+    return remove_dollar_sign(words[0])
+
+def remove_dollar_sign(input_string):
+    if input_string.startswith('$'):
+        return input_string[1:]
+    return input_string
 
 # Cache prompt for future runs
 @st.cache_data()
@@ -90,11 +105,18 @@ if question := st.chat_input("Generate tweets?"):
     tweets_array = answer.split('\n')
     print(tweets_array)
 
-    # TODO: Extract ticker symbol
-    ticker_symbol = 'TSLA'
+    # Extract the ticker symbol
+    ticker_symbol_array = []
+    for tweet in tweets_array:
+        extracted_symbol = ticker.get_answer(tweet)
+        # In case the tweet is about multiple stocks, extract the first symbol and ignore the rest.
+        first_symbol = get_first_word(extracted_symbol)
+        ticker_symbol_array.append(first_symbol)
+
+    print(ticker_symbol_array)
 
     # Add ticker symbol and timestamp to each element.
-    final_tweets_array = append_ticker_and_time(tweets_array, ticker_symbol)
+    final_tweets_array = append_ticker_and_time(tweets_array, ticker_symbol_array)
 
     # Write "Ticker Symbol","Timestamp", "Tweet Content", "Sentiment" to csv file.
     cw.write_array_to_csv(final_tweets_array)

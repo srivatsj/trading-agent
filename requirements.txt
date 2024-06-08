@@ -4,3 +4,6 @@ ragstack-ai
 pypdf
 pandas
 langgraph
+langchain
+langchain-experimental
+langchain-openai

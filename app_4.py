@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
-import csv_reader as cr
+import csv_agent as cr
 
 # Cache prompt for future runs
 @st.cache_data()
@@ -38,12 +38,7 @@ if 'messages' not in st.session_state:
 st.title("~~~Trading Agent~~~")
 st.markdown("""Trading Agent""")
 
-# Get the first column values from 10 random rows
-random_tweets = cr.read_random_rows_from_csv()
-st.markdown("random 10 tweets:")
-st.markdown(random_tweets)
-
-most_recent_tweets = cr.read_most_recent_rows_from_csv(5, "TSLA")
+most_recent_tweets = cr.read_most_recent_rows_from_csv(5, 'TSLA')
 st.markdown("most recent 5 tweets:")
 st.markdown(most_recent_tweets)
 
