@@ -6,6 +6,9 @@ from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
 import csv_writer as cw
 from datetime import datetime
+from streamingworkflow.graph import StreamingWorkFlow
+from chatworkflow.graph import ChatWorkFlow
+from langchain_core.messages import HumanMessage
 
 def append_ticker_and_time(input_array, ticker_symbol):
     timestamp_str = str(int(datetime.now().timestamp() * 1000))
@@ -95,6 +98,13 @@ if question := st.chat_input("Generate tweets?"):
 
     # Write "Ticker Symbol","Timestamp", "Tweet Content", "Sentiment" to csv file.
     cw.write_array_to_csv(final_tweets_array)
+
+    app = StreamingWorkFlow().app
+    app.invoke({})
+
+    app = ChatWorkFlow().app
+    inputs = {"messages": [HumanMessage(content="Tell me about Nvidia")]}
+    app.invoke(inputs)
 
     # Draw the bot's answer
     with st.chat_message('assistant'):

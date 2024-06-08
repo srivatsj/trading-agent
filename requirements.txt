@@ -3,3 +3,4 @@ streamlit
 ragstack-ai
 pypdf
 pandas
+langgraph
