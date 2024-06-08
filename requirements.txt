@@ -3,4 +3,3 @@ streamlit
 ragstack-ai
 pypdf
 pandas
-crewai
