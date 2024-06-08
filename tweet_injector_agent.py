@@ -108,7 +108,7 @@ if question := st.chat_input("Generate tweets?"):
     # Extract the ticker symbol
     ticker_symbol_array = []
     for tweet in tweets_array:
-        extracted_symbol = stock_extractor_agent.get_answer(tweet)
+        extracted_symbol = stock_extractor_agent.extract_stock(tweet)
         # In case the tweet is about multiple stocks, extract the first symbol and ignore the rest.
         first_symbol = get_first_word(extracted_symbol)
         ticker_symbol_array.append(first_symbol)
@@ -124,9 +124,9 @@ if question := st.chat_input("Generate tweets?"):
     app = StreamingWorkFlow().app
     app.invoke({})
 
-    app = ChatWorkFlow().app
-    inputs = {"messages": [HumanMessage(content="Tell me about Nvidia")]}
-    app.invoke(inputs)
+    #app = ChatWorkFlow().app
+    #inputs = {"messages": [HumanMessage(content="Tell me about Nvidia")]}
+    #app.invoke(inputs)
 
     # Draw the bot's answer
     with st.chat_message('assistant'):
