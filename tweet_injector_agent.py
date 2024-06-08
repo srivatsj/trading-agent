@@ -9,7 +9,7 @@ from datetime import datetime
 from streamingworkflow.graph import StreamingWorkFlow
 from chatworkflow.graph import ChatWorkFlow
 from langchain_core.messages import HumanMessage
-import ticker as ticker
+import stock_extractor_agent as stock_extractor_agent
 
 def append_ticker_and_time(input_array, ticker_symbol_array):
     timestamp_str = str(int(datetime.now().timestamp() * 1000))
@@ -108,7 +108,7 @@ if question := st.chat_input("Generate tweets?"):
     # Extract the ticker symbol
     ticker_symbol_array = []
     for tweet in tweets_array:
-        extracted_symbol = ticker.get_answer(tweet)
+        extracted_symbol = stock_extractor_agent.get_answer(tweet)
         # In case the tweet is about multiple stocks, extract the first symbol and ignore the rest.
         first_symbol = get_first_word(extracted_symbol)
         ticker_symbol_array.append(first_symbol)
