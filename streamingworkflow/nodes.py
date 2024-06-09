@@ -4,6 +4,7 @@ from agents.csv_agent import *
 from agents.sentiment_agent import *
 from agents.stock_extractor_agent import *
 from agents.summarize_agent import *
+from agents.email_agent import *
 
 class Nodes():
     def __init__(self):
@@ -48,5 +49,6 @@ class Nodes():
     def send_email(self, state):
         print("## Send email")
 
-        # Use Email agent to send email
+        # Use Summary agent to summarize
+        send_email()
         return
