@@ -37,7 +37,8 @@ class Nodes():
         print("## Get Tweet summary")
 
         # Use Summary agent to summarize
-        summary = get_summarization(state["tweets"])
+        summary = get_tweet_summary(state["tweets"])
+        print('Tweets summary : ', summary)
         return {
           **state,
           "tweet_summary": summary
