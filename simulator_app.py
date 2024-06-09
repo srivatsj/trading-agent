@@ -4,12 +4,12 @@ from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
-import csv_writer as cw
+import util.csv_writer as cw
 from datetime import datetime
 from streamingworkflow.graph import StreamingWorkFlow
 from chatworkflow.graph import ChatWorkFlow
 from langchain_core.messages import HumanMessage
-import stock_extractor_agent as stock_extractor_agent
+import agents.stock_extractor_agent as stock_extractor_agent
 
 def append_ticker_and_time(input_array, ticker_symbol_array):
     timestamp_str = str(int(datetime.now().timestamp() * 1000))

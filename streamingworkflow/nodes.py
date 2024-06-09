@@ -1,9 +1,9 @@
 import os
 import time
-from csv_agent import *
-from sentiment_agent import *
-from stock_extractor_agent import *
-from summarize_agent import *
+from agents.csv_agent import *
+from agents.sentiment_agent import *
+from agents.stock_extractor_agent import *
+from agents.summarize_agent import *
 
 class Nodes():
     def __init__(self):
@@ -37,9 +37,9 @@ class Nodes():
         print("## Get Tweet summary")
 
         # Use Summary agent to summarize
-        print("## Before call", state["tweets"])
-        summary = get_summarization(state["tweets"])
+        summary = get_tweet_summary(state["tweets"])
         print('Tweets summary ', summary)
+
         return {
           **state,
           "tweet_summary": summary

@@ -4,7 +4,7 @@ from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
-import csv_agent as cr
+import agents.csv_agent as cr
 
 # Cache prompt for future runs
 @st.cache_data()

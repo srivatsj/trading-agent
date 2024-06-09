@@ -1,11 +1,8 @@
-import streamlit as st
 from langchain_openai import OpenAIEmbeddings
 from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import AstraDB
 from langchain.schema.runnable import RunnableMap
 from langchain.prompts import ChatPromptTemplate
-
-# Cache prompt for future runs
 
 def load_prompt():
     template =  """You're a helpful AI Trading Agent that gets a list of the latest tweets please summarize the tweets and give an overall recommendation of bullish, bearish or neutral for the given stock.
@@ -28,8 +25,6 @@ def load_chat_model():
 
 def get_tweet_summary(tweets):
     # Generate the answer by calling OpenAI's Chat Model
-    #print("tweet summary debug2")
-    #print(tweets)
     chat_model = load_chat_model()
     prompt = load_prompt()
 

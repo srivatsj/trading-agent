@@ -1,5 +1,8 @@
 {
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
-    }
+    },
+    "python.analysis.extraPaths": [
+        "./agents"
+    ]
 }
