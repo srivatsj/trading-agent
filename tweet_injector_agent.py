@@ -103,7 +103,7 @@ if question := st.chat_input("Generate tweets?"):
 
     # Convert answer into a str array.
     tweets_array = answer.split('\n')
-    print(tweets_array)
+    print("tweets_array", tweets_array)
 
     # Extract the ticker symbol
     ticker_symbol_array = []
@@ -113,7 +113,7 @@ if question := st.chat_input("Generate tweets?"):
         first_symbol = get_first_word(extracted_symbol)
         ticker_symbol_array.append(first_symbol)
 
-    print(ticker_symbol_array)
+    print("ticker_symbol_array ", ticker_symbol_array)
 
     # Add ticker symbol and timestamp to each element.
     final_tweets_array = append_ticker_and_time(tweets_array, ticker_symbol_array)
