@@ -10,11 +10,11 @@ class Nodes():
         self.gmail = ""
 
     def get_latest_tweets(self, state):
-        print("## Checking for new tweets for")
+        print("## Checking for most recent tweets")
 
-        # Use CSV agent to get latest tweets about Apple or some harcoded stock
-        tweets = read_most_recent_rows_from_csv(10, "TSLA")
-        print('Tweets from csv ', tweets)
+        # Use CSV agent to get latest tweets about a certain stock
+        tweets = read_most_recent_rows_from_csv(10, state["ticker_symbol"])
+        print('Most recent 10 tweets from csv ', tweets)
 
         return {
           **state,
@@ -48,5 +48,5 @@ class Nodes():
     def send_email(self, state):
         print("## Send email")
 
-        # Use Summary agent to summarize
+        # Use Email agent to send email
         return

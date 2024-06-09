@@ -121,12 +121,9 @@ if question := st.chat_input("Generate tweets?"):
     # Write "Ticker Symbol","Timestamp", "Tweet Content", "Sentiment" to csv file.
     cw.write_array_to_csv(final_tweets_array)
 
+    # Define the sentence you want to pass as a parameter
     app = StreamingWorkFlow().app
-    app.invoke({})
-
-    #app = ChatWorkFlow().app
-    #inputs = {"messages": [HumanMessage(content="Tell me about Nvidia")]}
-    #app.invoke(inputs)
+    app.invoke({"ticker_symbol": ticker_symbol_array[0]})
 
     # Draw the bot's answer
     with st.chat_message('assistant'):
