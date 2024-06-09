@@ -7,3 +7,7 @@ langgraph
 langchain
 langchain-experimental
 langchain-openai
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+pyngrok
