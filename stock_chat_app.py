@@ -31,8 +31,25 @@ if question := st.chat_input("What's up?"):
 
     print("question: ", question)
     app = ChatWorkFlow().app
-    app.invoke({"sentence": question})
+    data = app.invoke({"sentence": question})
+
+    # Extracting the needed information
+    tweets = data['tweets'].split('\n')
+    tweet_sentiment_lines = data['tweet_sentiment'].split('\n')
+    tweet_summary = data['tweet_summary']
 
     # Draw the bot's answer
     with st.chat_message('assistant'):
-        st.markdown("some answer")
+        st.subheader("Tweet Summary")
+        st.markdown(f"{tweet_summary}")
+
+        st.subheader("Tweets and Sentiments")
+        
+        for i, tweet in enumerate(tweets):
+            if i < len(tweet_sentiment_lines):
+                sentiment = tweet_sentiment_lines[i].split(' ', 1)[1]  # Extracting sentiment text after number
+            else:
+                sentiment = "No sentiment available"
+            st.markdown(f"**Tweet {i+1}:** {tweet}")
+            st.markdown(f"**Sentiment:** {sentiment}")
+            st.markdown("---")  # Add a horizontal rule for better separation
