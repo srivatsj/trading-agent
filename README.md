@@ -74,6 +74,6 @@ pip3 install -r requirements.txt
 ```
 
 
-## Workflow Link
+## Demo Link
 
 TODO
