@@ -16,9 +16,9 @@ pip3 install -r requirements.txt
 **Trading Agent**
 
 ## Team Members 
-- Andy Lai
-- Esra Ku
-- Srivats Jayram
+- Andy
+- Esra
+- Sri
 
 ## Github Repo
 [https://github.com/srivatsj/trading-agent/tree/main](https://github.com/srivatsj/trading-agent/tree/main)
