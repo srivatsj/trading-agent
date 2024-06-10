@@ -76,4 +76,9 @@ pip3 install -r requirements.txt
 
 ## Demo Link
 
-TODO
+* [Demo Link](https://github.com/srivatsj/trading-agent/blob/main/codepath.mp4)
+
+## Slides Link
+
+* [in pdf format](https://github.com/srivatsj/trading-agent/blob/main/Tweet%20Agent.pdf)
+* [in Google Slides format](https://docs.google.com/presentation/d/1nntKbB5ofrFKi6XcKNP0oNahon75pBiKBq9ZKC1a_tI/edit#slide=id.g273475a7c79_0_45)
